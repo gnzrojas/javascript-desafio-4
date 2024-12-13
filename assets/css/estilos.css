@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-section {
+    background-image: url('../img/img-main.jpeg');
+    background-size: cover; /* La imagen cubrirá todo el ancho y largo */
+    background-position: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+}
+
+.row {
+    padding: 2em;
+}
+
+.card {
+    height: 100px;
+
+}
+
+.card img{
+    height: 250px;
+}
+
+/*.alquiler {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    
+}*/

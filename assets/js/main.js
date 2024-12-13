@@ -1,34 +1,41 @@
 import { arriendos } from "./alquiler.js"
 import { ventas } from "./venta.js"
 
-//RENDERIZACIÓN DE PROPIEDADES EN ALQUILER PROPIEDADES_ALQUILER.HTML
-let arriendoArticle = document.querySelector('#propiedades-alquiler')
+//Función para renderizar las propiedades en base a alquiler o venta, con su respectivo id
+function renderizarPropiedades(propiedades, contenedorId) {
+    const contenedor = document.getElementById(`${contenedorId}`)
+    if (!contenedor) return
 
-for (const arriendo of arriendos) {
-    arriendoArticle.innerHTML +=
-        `
-        <div class="col-md-4 mb-4">
-        <div class="card">   
-        <img src=${arriendo.src} class="card-img-top" alt="Imagen de la propiedad"/>
-        <div class="card-body">
-        <h5 class="card-title"> ${arriendo.nombre}</h5>
-        <p class="card-text"> ${arriendo.descripcion}</p>
-        <p>
-            <i class="fas fa-map-marker-alt"></i> ${arriendo.ubicacion}</p>
-        <p>
-            <i class="fas fa-bed"></i> ${arriendo.habitaciones} |
-            <i class="fas fa-bath"></i> ${arriendo.baños}
-            </p>
-        <p>
-            <i class="fas fa-dollar-sign"></i> ${arriendo.costo.toLocaleString()}</p>
-        <p class= ${arriendo.smoke ? 'text-success' : 'text-danger'}>
-            <i class="fa-solid ${arriendo.smoke ? 'fa-smoking' : 'fa-ban' }"></i> ${arriendo.smoke ? 'Permitido fumar' : 'No se permite fumar'}</p>
-        <p class= ${arriendo.pets ? 'text-success' : 'text-danger'}>
-            <i class="fa-solid ${arriendo.pets ? 'fa-paw' : 'fa-ban'}"></i> ${arriendo.pets ? 'Se admiten mascotas' : 'No se admiten mascotas'}
-            </p>
-   
-        </div>
-        </div>`
+    for (const propiedad of propiedades) {
+        contenedor.innerHTML +=
+            `
+            <div class="col-md-4 mb-4">
+            <div class="card">   
+            <img src=${propiedad.src} class="card-img-top" alt="Imagen de la propiedad"/>
+            <div class="card-body">
+            <h5 class="card-title"> ${propiedad.nombre}</h5>
+            <p class="card-text"> ${propiedad.descripcion}</p>
+            <p>
+                <i class="fas fa-map-marker-alt"></i> ${propiedad.ubicacion}</p>
+            <p>
+                <i class="fas fa-bed"></i> ${propiedad.habitaciones} |
+                <i class="fas fa-bath"></i> ${propiedad.baños}
+                </p>
+            <p>
+                <i class="fas fa-dollar-sign"></i> ${propiedad.costo.toLocaleString()}</p>
+            <p class= ${propiedad.smoke ? 'text-success' : 'text-danger'}>
+                <i class="fa-solid ${propiedad.smoke ? 'fa-smoking' : 'fa-ban'}"></i> ${propiedad.smoke ? 'Permitido fumar' : 'No se permite fumar'}</p>
+            <p class= ${propiedad.pets ? 'text-success' : 'text-danger'}>
+                <i class="fa-solid ${propiedad.pets ? 'fa-paw' : 'fa-ban'}"></i> ${propiedad.pets ? 'Se admiten mascotas' : 'No se admiten mascotas'}
+                </p>
+            </div>
+            </div>
+            </div>`
+    }
+
 }
 
-//RENDERIZACIÓN DE PROPIEDAES ALQUILER EN INDEX.HTML
+//Ejecutar la función para propiedades en arriendo y en ventas
+renderizarPropiedades(arriendos, 'propiedades-alquiler')
+renderizarPropiedades(ventas, 'propiedades-venta')
+
